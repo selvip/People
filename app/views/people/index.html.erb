@@ -1,0 +1,26 @@
+<h2 class="section-heading">People Index</h2>
+<hr class="light">
+<p class="text-faded">
+	<table width="100%">
+    <tr style="background-color: gray; color:white;">
+      <td>ID</td>
+      <td width="20%">Name</td>
+      <td width="20%">Age</td>
+      <td width="20%">Money</td>
+      <td colspan="2" width="20%">Action</td>
+    </tr>
+		<% @people.each do |person| %>
+		<tr>
+			<td><%= person.id %></td>
+			<td><%= person.age %></td>
+			<td><%= person.money %></td>
+			<td><%= link_to 'Edit', edit_user_path(user) %></td>
+			<td>
+				<%= link_to "Delete", user, 
+				method: :delete,
+			  data: { confirm: "You sure?" } %>  	
+		  </td>
+		</tr>
+		<% end %>
+	</table>
+</p>

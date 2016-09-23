@@ -1,0 +1,6 @@
+<%= form_for(@person) do |f| %>
+  <p><%= f.text_field :name, placeholder: "Name" %></p>
+  <p><%= f.number_field :age, placeholder: "Age" %></p>
+  <p><%= f.number_field :money, placeholder: "Money" %></p>
+  <div class="page-scroll btn btn-default btn-xl sr-button"><%= f.submit "Submit" %></div>
+<% end %>
