@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # README
 
 This README would normally document whatever steps are necessary to get the
@@ -22,3 +23,7 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+=======
+# People
+This is implementation of MotorCycle repository.
+>>>>>>> 4d4d0c52167490c7ec4e0ecc79b32a551fdd5b9a
