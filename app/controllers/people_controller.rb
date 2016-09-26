@@ -14,16 +14,33 @@ class PeopleController < ApplicationController
 
 	def create
 		@person = Person.new(person_params)
-		@person.save
+		if @person.save
+			redirect_to(person_path(@person))
+		else
+			render 'new'
+		end
 	end
 
 	def edit
+		@person = Person.find(params[:id])
 	end
 
-	def create
+	def update
+		@person = Person.find(params[:id])
+		@person.update_attributes(person_params)
+		if @person.valid?
+			@person.save
+			redirect_to @person
+		else
+			render 'edit'
+		end
 	end
 
 	def destroy
+		@person = Person.find(params[:id])
+		@person.destroy
+		flash[:success] = "Person deleted."
+		redirect_to people_path
 	end
 
 	private

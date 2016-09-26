@@ -1,26 +1,39 @@
-<h2 class="section-heading">People Index</h2>
-<hr class="light">
-<p class="text-faded">
-	<table width="100%">
-    <tr style="background-color: gray; color:white;">
-      <td>ID</td>
-      <td width="20%">Name</td>
-      <td width="20%">Age</td>
-      <td width="20%">Money</td>
-      <td colspan="2" width="20%">Action</td>
-    </tr>
+<h2>People Index</h2>
+<hr />
+<table class="table table-inverse">
+	<thead>
+	  <tr class="bg-primary">
+	    <th>#</th>
+	    <td>Name</td>
+	    <td>Age</td>
+	    <td>Money</td>
+	    <td colspan="2"><center>Action</center></td>
+	  </tr>
+	</thead>
+	<tbody>
 		<% @people.each do |person| %>
-		<tr>
-			<td><%= person.id %></td>
-			<td><%= person.age %></td>
-			<td><%= person.money %></td>
-			<td><%= link_to 'Edit', edit_user_path(user) %></td>
-			<td>
-				<%= link_to "Delete", user, 
-				method: :delete,
-			  data: { confirm: "You sure?" } %>  	
-		  </td>
-		</tr>
+			<tr>
+				<th scope="row"><%= person.id %></th>
+				<td><%= link_to person.name, person%></td>
+				<td><%= person.age %></td>
+				<td><%= person.money %></td>
+				<td>
+					<center>
+						<%= link_to 'Edit', edit_person_path(person), 
+								class: "btn btn-default" %>
+					</center>
+				</td>
+				<td><center>
+					<%= button_to 'Destroy', person, 
+					method: :delete,
+					class: 'btn btn-default',
+				  data: { confirm: 'Are you sure?' } %>  	
+			  </center></td>
+			</tr>
 		<% end %>
-	</table>
-</p>
+	</tbody>
+</table>
+
+<br /><br />
+<h4><%= link_to "Create a new person", new_person_path %></h4>
+<br /><br />

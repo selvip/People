@@ -3,7 +3,7 @@ class CreatePeople < ActiveRecord::Migration[5.0]
     create_table :people do |t|
     	t.string :name
     	t.integer :age
-    	t.integer :money
+    	t.decimal :money
 
       t.timestamps
     end

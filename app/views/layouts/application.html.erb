@@ -1,83 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-
+  <head>
     <title>People</title>
-
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag 'application', media: 'all' %> 
+  </head>
 
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
-
-</head>
-
-<body id="page-top">
-
-    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
-                </button>
-                <a class="navbar-brand page-scroll" href="#page-top">People</a>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a class="page-scroll" href="#about">About</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#services">Services</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#portfolio">Portfolio</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#contact">Contact</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li><%= link_to 'Homepage', root_path %></li>
+            <li><%= link_to 'Index', people_path %></li>
+            <li><%= link_to 'New', new_person_path %></li>
+          </ul>
         </div>
-        <!-- /.container-fluid -->
+      </div>
     </nav>
 
+
     <header>
-        <div class="header-content">
-            <div class="header-content-inner">
-                <h1 id="homeHeading">People</h1>
-                <hr>
-                <p>This is the Ruby on Rails implementation of <a href="https://github.com/selvip/MotorCycle">MotorCycle</a> repository.</p>
-                <a href="#about" class="btn btn-primary btn-xl page-scroll">Click me!</a>
-            </div>
+      <div class="jumbotron">
+          <div class="container">
+            <h1>
+              <center>
+                <%= link_to_unless current_page?(people_path), 'People', people_path %>
+              </center>
+            </h1>
+            <hr>
+          </div>
         </div>
     </header>
 
-    <section class="bg-primary" id="about">
+      <content>
         <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <%= yield %>
-                </div>
-            </div>
+          <%= yield %>
         </div>
-    </section>
+      </content>
 
-    <aside class="bg-dark">
-        <div class="container text-center">
-            <div class="call-to-action">
-                <h2>Free Download at Start Bootstrap!</h2>
-                <a href="http://startbootstrap.com/template-overviews/creative/" class="btn btn-default btn-xl sr-button">Download This Bootstrap!</a>
-            </div>
+      <footer class="footer" style="background-color:#414141; color:#efefef; text-align:right; padding-top:25px; padding-bottom:25px;">
+        <div class="container">
+          <address>
+          <strong>Selvi Pebrina <span class="glyphicon glyphicon-user" aria-hidden="true"></span></strong><br />
+             Jakarta, Indonesia <span class="glyphicon glyphicon-home" aria-hidden="true"></span><br />
+             (123) 456-7890 <span class="glyphicon glyphicon-phone" aria-hidden="true"></span><br />
+            <a href="mailto:#">selvipebrina@gmail.com </a><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+          </address>
         </div>
-    </aside>
+      </footer>
+  </body>
 
-</body>
-<%= javascript_include_tag 'application' %>
 </html>
