@@ -1,4 +1,6 @@
-<h2 class="section-heading">Person Details</h2>
+<% content_for :jumbotron do %>
+	<h1>Person Details</h1>
+<% end %>
 <hr class="light">
 <p class="text-faded">
 	<div class="table-responsive">
@@ -21,6 +23,13 @@
 				<th width="10%" class="bg-primary">Money</th>
 				<td><%= @person.money %></td>
 			</tr>
+			<tr>
+				<th width="10%" class="bg-primary" colpsan="2">Garage</th>
+			</tr>
+			<tr>
+				<td colspan="2"><%= @person.garage %></td>
+			</tr>
 		</table>
 	</div>
+	<%= link_to 'Add', new_person_garage_path(person_id: @person.id), class: "btn bnt-default" %>
 </p>

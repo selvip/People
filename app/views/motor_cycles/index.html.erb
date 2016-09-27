@@ -1,32 +1,33 @@
 <% content_for :jumbotron do %>
-	<h1>People Index</h1>
+	<h1>MotorCycles Index</h1>
 <% end %>
+
 <hr />
 <table class="table table-inverse">
 	<thead>
 	  <tr class="bg-primary">
 	    <th>#</th>
 	    <td>Name</td>
-	    <td>Age</td>
-	    <td>Money</td>
+	    <td>Velocity</td>
+	    <td>Max Capacity</td>
 	    <td colspan="2"><center>Action</center></td>
 	  </tr>
 	</thead>
 	<tbody>
-		<% @people.each do |person| %>
+		<% @motor_cycles.each do |motor| %>
 			<tr>
-				<th scope="row"><%= person.id %></th>
-				<td><%= link_to person.name, person%></td>
-				<td><%= person.age %></td>
-				<td><%= person.money %></td>
+				<th scope="row"><%= motor.id %></th>
+				<td><%= link_to motor.name, motor%></td>
+				<td><%= motor.velocity %></td>
+				<td><%= motor.max_capacity_fuel %></td>
 				<td>
 					<center>
-						<%= link_to 'Edit', edit_person_path(person), 
+						<%= link_to 'Edit', edit_motor_cycle_path(motor), 
 								class: "btn btn-default" %>
 					</center>
 				</td>
 				<td><center>
-					<%= button_to 'Destroy', person, 
+					<%= button_to 'Destroy', motor, 
 					method: :delete,
 					class: 'btn btn-default',
 				  data: { confirm: 'Are you sure?' } %>  	
@@ -37,5 +38,5 @@
 </table>
 
 <br /><br />
-<h4><%= link_to "Create a new person", new_person_path %></h4>
+<h4><%= link_to "Create a new motorcycle", new_motor_cycle_path %></h4>
 <br /><br />

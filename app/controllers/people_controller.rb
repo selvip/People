@@ -38,8 +38,9 @@ class PeopleController < ApplicationController
 
 	def destroy
 		@person = Person.find(params[:id])
+		name = @person.name
 		@person.destroy
-		flash[:success] = "Person deleted."
+		flash[:notice] = "#{name} removed."
 		redirect_to people_path
 	end
 
