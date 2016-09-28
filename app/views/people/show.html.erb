@@ -31,21 +31,15 @@
 			</tr>
 			</thead>
 			<tr>
-				<th class="bg-primary" style="text-align:center;">MotorCycle Name</th>
-				<th class="bg-primary" style="text-align:center;" colspan="2">Action</th>
-				<th class="bg-primary" colspan="2" style="text-align:center;">Garage</th>
-			</tr>
-			</thead>
-			<tr>
 				<th width="50%" class="bg-primary" style="text-align:center;">MotorCycle Name</th>
-				<th width="50%" class="bg-primary" style="text-align:center;">Action</th>
+				<th width="50%" class="bg-primary" style="text-align:center;" colspan="3">Action</th>
 			</tr>
 			<% garages = list_motor_own(@person.id) %>
 			<% garages.each do |garage| %>
 				<tr>
 				<% motor = find_motor(garage.motor_cycle_id) %>
-					<td style="text-align:center;"><%= link_to motor.name, motor_cycle_path(motor) %></td>
-					<td style="text-align:center;"><%= link_to "Edit", edit_motor_cycle_path(motor), class: 'btn btn-default'%></td>
+					<td style="text-align:center;"><%= motor.name %></td>
+					<td style="text-align:center;"><%= link_to "Edit", edit_motor_cycle_path(motor), class: "btn btn-default" %></td>
 					<td style="text-align:center;">
 						<%= button_to "Remove", 
 						person_garage_path(person_id: @person.id, id: garage.id), 
