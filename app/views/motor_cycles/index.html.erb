@@ -11,6 +11,7 @@
 	    <td>Velocity</td>
 	    <td>Max Capacity</td>
 	    <td><center>Action</center></td>
+	    <td colspan="2"><center>Action</center></td>
 	  </tr>
 	</thead>
 	<tbody>
@@ -20,6 +21,12 @@
 				<td><%= link_to motor.name, motor%></td>
 				<td><%= motor.velocity %></td>
 				<td><%= motor.max_capacity_fuel %></td>
+				<td>
+					<center>
+						<%= link_to 'Edit', edit_motor_cycle_path(motor), 
+								class: "btn btn-default" %>
+					</center>
+				</td>
 				<td><center>
 					<%= button_to 'Destroy', motor, 
 					method: :delete,

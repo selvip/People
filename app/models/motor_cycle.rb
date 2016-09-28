@@ -1,4 +1,5 @@
 class MotorCycle < ApplicationRecord
+	
 	has_many :garages, dependent: :destroy
 	validates :name, presence: true, length: {maximum:45}
 	validates_numericality_of :max_capacity_fuel, greater_than_or_equal_to: :current_fuel
