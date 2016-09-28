@@ -2,7 +2,7 @@
 	<h1>Add MotorCycle to Garage</h1>
 <% end %>
 <%= form_for([@person, @garage]) do |f| %>
-	<%= f.collection_select(:motor_cycle_id, list_motors, :id, :name) %>
+	<%= f.collection_select(:motor_cycle_id, find_no_owner_motor, :id, :name) %>
 	<%= f.submit "Submit", class: "btn btn-default" %>
 <% end %>
 <br /><br /><br />

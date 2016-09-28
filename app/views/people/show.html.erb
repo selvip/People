@@ -38,7 +38,7 @@
 			<% garages.each do |garage| %>
 				<tr>
 				<% motor = find_motor(garage.motor_cycle_id) %>
-					<td style="text-align:center;"><%= motor.name %></td>
+					<td style="text-align:center;"><%= link_to motor.name, motor %></td>
 					<td style="text-align:center;"><%= link_to "Edit", edit_motor_cycle_path(motor), class: "btn btn-default" %></td>
 					<td style="text-align:center;">
 						<%= button_to "Remove", 

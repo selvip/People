@@ -16,4 +16,11 @@ module ApplicationHelper
 		list_garages.select{ |garage| garage.person_id == person_id }
 	end
 
+	def find_no_owner_motor
+		motor_id_garages = list_garages.map{ |garage| garage.motor_cycle_id }
+		motor_id_motorcycles = list_motors.map{ |motor| motor.id }
+		motors_id = motor_id_motorcycles - motor_id_garages
+		motors_id.map { |motor_id| find_motor(motor_id) }
+	end
+
 end
