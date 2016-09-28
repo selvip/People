@@ -1,0 +1,55 @@
+<% content_for :jumbotron do %>
+	<h1>Person Details</h1>
+<% end %>
+<hr class="light">
+<p class="text-faded">
+	<div class="table-responsive">
+		<table class="table table-striped table-inverse">
+			<thead>
+		    <tr>
+		      <th width="30%" class="bg-primary">ID</th>
+		      <td width="70%"><%= @person.id %></td>
+		    </tr>
+	    </thead>
+			<tr>
+				<th class="bg-primary">Name</th>
+				<td><%= @person.name %></td>
+			</tr>
+			<tr>
+				<th class="bg-primary">Age</th>
+				<td><%= @person.age %></td>
+			</tr>
+			<tr>
+				<th class="bg-primary">Money</th>
+				<td><%= @person.money %></td>
+			</tr>
+		</table>
+		<table class="table table-striped table-inverse">
+			<thead>
+			<tr>
+				<th class="bg-primary" colspan="3" style="text-align:center;">Garage</th>
+			</tr>
+			</thead>
+			<tr>
+				<th class="bg-primary" style="text-align:center;">MotorCycle Name</th>
+				<th class="bg-primary" style="text-align:center;" colspan="2">Action</th>
+			</tr>
+			<% garages = list_motor_own(@person.id) %>
+			<% garages.each do |garage| %>
+				<tr>
+				<% motor = find_motor(garage.motor_cycle_id) %>
+					<td style="text-align:center;"><%= link_to motor.name, motor_cycle_path(motor) %></td>
+					<td style="text-align:center;"><%= link_to "Edit", edit_motor_cycle_path(motor), class: 'btn btn-default'%></td>
+					<td style="text-align:center;">
+						<%= button_to "Remove", 
+						person_garage_path(person_id: @person.id, id: garage.id), 
+						method: :delete, 
+						class: 'btn btn-default',
+						data: {confirm: 'Are you sure?'} %>
+					</td>
+				</tr>
+			<% end %>
+		</table>
+	</div>
+	<%= link_to 'Add', new_person_garage_path(person_id: @person.id), class: "btn btn-default" %>
+</p>

@@ -1,0 +1,41 @@
+<% content_for :jumbotron do %>
+	<h1>People Index</h1>
+<% end %>
+<hr />
+<table class="table table-inverse">
+	<thead>
+	  <tr class="bg-primary">
+	    <th>#</th>
+	    <td>Name</td>
+	    <td>Age</td>
+	    <td>Money</td>
+	    <td colspan="2"><center>Action</center></td>
+	  </tr>
+	</thead>
+	<tbody>
+		<% @people.each do |person| %>
+			<tr>
+				<th scope="row"><%= person.id %></th>
+				<td><%= link_to person.name, person%></td>
+				<td><%= person.age %></td>
+				<td><%= person.money %></td>
+				<td>
+					<center>
+						<%= link_to 'Edit', edit_person_path(person), 
+								class: "btn btn-default" %>
+					</center>
+				</td>
+				<td><center>
+					<%= button_to 'Destroy', person, 
+					method: :delete,
+					class: 'btn btn-default',
+				  data: { confirm: 'Are you sure?' } %>  	
+			  </center></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+
+<br /><br />
+<h4><%= link_to "Create a new person", new_person_path, class: 'btn btn-default'%></h4>
+<br /><br />

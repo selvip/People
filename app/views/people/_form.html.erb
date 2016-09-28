@@ -1,0 +1,53 @@
+
+<table width="100%">
+<%= form_for(@person, html: {class: 'form-inline'}) do |f| %>
+	<tr>
+		<td>
+			<label for="name">Name</label>
+		</td>
+		<td>
+	 		<%= f.text_field :name, placeholder: "Name", class:"form-control" %>
+	 	</td>
+ 	</tr>
+	<tr>
+		<td></td>
+		<td>
+			<% name_error = @person.errors.full_messages_for(:name).join(", ") if @person.errors.include?(:name)%>
+			<%= (content_tag(:p, name_error, class: 'alert alert-danger', role: 'alert')) unless (name_error.blank?) %>
+		</td>
+	</tr>
+ 	<tr>
+	 	<td>
+	 		<label for="age">Age</label>
+	 	</td>
+	 	<td>
+	 		<%= f.number_field :age, placeholder: "Age", class:"form-control" %>
+	 	</td>
+ 	</tr>
+ 	<tr>
+		<td></td>
+		<td>
+			<% age_error = @person.errors.full_messages_for(:age).join(", ") if @person.errors.include?(:age)%>
+			<%= (content_tag(:p, age_error, class: 'alert alert-danger', role: 'alert')) unless (age_error.blank?) %>
+		</td>
+	</tr>
+ 	<tr>
+ 		<td>
+	 		<label for="money">Money</label>
+ 		</td>
+ 		<td>
+ 			<%= f.number_field :money, placeholder: "Money", class:"form-control", step: :any %>
+ 		</td>
+ 	</tr>
+ 	 <tr>
+		<td></td>
+		<td>
+			<% money_error = @person.errors.full_messages_for(:money).join(", ") if @person.errors.include?(:money)%>
+			<%= (content_tag(:p, money_error, class: 'alert alert-danger', role: 'alert')) unless (money_error.blank?) %>
+		</td>
+	</tr>
+</table>
+<br />
+<center><%= f.submit "Submit", class: "btn btn-default" %></center>
+<% end %>
+<br />

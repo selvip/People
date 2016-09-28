@@ -1,0 +1,28 @@
+<% content_for :jumbotron do %>
+	<h1>MotorCycle Details</h1>
+<% end %>
+<hr class="light">
+<p class="text-faded">
+	<div class="table-responsive">
+		<table class="table table-striped table-inverse">
+			<thead>
+		    <tr>
+		      <th width="10%" class="bg-primary">ID</th>
+		      <td width="30%"><%= @motor_cycle.id %></td>
+		    </tr>
+	    </thead>
+			<tr>
+				<th width="10%" class="bg-primary">Name</th>
+				<td><%= @motor_cycle.name %></td>
+			</tr>
+			<tr>
+				<th width="10%" class="bg-primary">Velocity</th>
+				<td><%= "#{@motor_cycle.velocity} meter per seconds." %></td>
+			</tr>
+			<tr>
+				<th width="10%" class="bg-primary">Fuel</th>
+				<td><%= "#{@motor_cycle.current_fuel} from #{@motor_cycle.max_capacity_fuel} liters." %></td>
+			</tr>
+		</table>
+	</div>
+</p>

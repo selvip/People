@@ -1,0 +1,70 @@
+<%= @motor_cycle.errors.full_messages.to_sentence %>
+
+
+<table width="100%">
+<%= form_for(@motor_cycle, html: {class: 'form-inline'}) do |f| %>
+	<tr>
+		<td>
+			<label for="name">Name</label>
+		</td>
+		<td>
+	 		<%= f.text_field :name, placeholder: "Name", class:"form-control" %>
+	 	</td>
+ 	</tr>
+	<tr>
+		<td></td>
+		<td>
+			<% name_error = @motor_cycle.errors.full_messages_for(:name).join(", ") if @motor_cycle.errors.include?(:name)%>
+			<%= (content_tag(:p, name_error, class: 'alert alert-danger', role: 'alert')) unless (name_error.blank?) %>
+		</td>
+	</tr>
+ 	<tr>
+	 	<td>
+	 		<label for="velocity">Velocity</label>
+	 	</td>
+	 	<td>
+	 		<%= f.number_field :velocity, placeholder: "Velocity", class:"form-control", step: :any %>
+	 	</td>
+ 	</tr>
+ 	<tr>
+		<td></td>
+		<td>
+			<% velocity_error = @motor_cycle.errors.full_messages_for(:velocity).join(", ") if @motor_cycle.errors.include?(:velocity)%>
+			<%= (content_tag(:p, velocity_error, class: 'alert alert-danger', role: 'alert')) unless (velocity_error.blank?) %>
+		</td>
+	</tr>
+ 	<tr>
+ 		<td>
+	 		<label for="max_capacity_fuel">Max Capacity</label>
+ 		</td>
+ 		<td>
+ 			<%= f.number_field :max_capacity_fuel, placeholder: "Max Capacity", class:"form-control", step: :any %>
+ 		</td>
+ 	</tr>
+ 	 <tr>
+		<td></td>
+		<td>
+			<% max_capacity_fuel_error = @motor_cycle.errors.full_messages_for(:max_capacity_fuel).join(", ") if @motor_cycle.errors.include?(:max_capacity_fuel)%>
+			<%= (content_tag(:p, max_capacity_fuel_error, class: 'alert alert-danger', role: 'alert')) unless (max_capacity_fuel_error.blank?) %>
+		</td>
+	</tr>
+	<tr>
+ 		<td>
+	 		<label for="current_fuel">Current Fuel</label>
+ 		</td>
+ 		<td>
+ 			<%= f.number_field :current_fuel, placeholder: "Current Fuel", class:"form-control", step: :any %>
+ 		</td>
+ 	</tr>
+ 	 <tr>
+		<td></td>
+		<td>
+			<% current_fuel_error = @motor_cycle.errors.full_messages_for(:current_fuel).join(", ") if @motor_cycle.errors.include?(:current_fuel)%>
+			<%= (content_tag(:p, current_fuel_error, class: 'alert alert-danger', role: 'alert')) unless (current_fuel_error.blank?) %>
+		</td>
+	</tr>
+</table>
+<br />
+<center><%= f.submit "Submit", class: "btn btn-default" %></center>
+<% end %>
+<br />

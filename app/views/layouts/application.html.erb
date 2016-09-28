@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>People</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag 'application', media: 'all' %> 
+  </head>
+
+  <body>
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+            <% unless current_page?(people_path) %>
+              <%= link_to 'People', people_path %></li>
+            <% else %>
+              <%= content_tag(:li, content_tag(:a, 'People')) %></li>
+            <% end %>
+            <li>
+            <% unless current_page?(motor_cycles_path) %>
+              <%= link_to 'MotorCycle', motor_cycles_path %></li>
+            <% else %>
+              <%= content_tag(:li, content_tag(:a, 'MotorCycle')) %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <header>
+      <div class="jumbotron">
+          <div class="container">
+            <h1>
+              <center>
+                <% if content_for?(:jumbotron) %>
+                  <div><%= yield(:jumbotron) %></div>
+                <% end %>
+              </center>
+            </h1>
+            <hr>
+          </div>
+        </div>
+    </header>
+
+      <content>
+        <div class="container">
+          <% if flash[:notice] %>
+            <div class="notice"><%= flash[:notice] %></div>
+          <% end %>
+          <%= yield %>
+        </div>
+      </content>
+
+      <footer class="footer navbar-bottom" style="background-color:#414141; color:#efefef; text-align:right; padding-top:25px; padding-bottom:25px;">
+        <div class="container">
+          <address>
+          <strong>Selvi Pebrina <span class="glyphicon glyphicon-user" aria-hidden="true"></span></strong><br />
+             Jakarta, Indonesia <span class="glyphicon glyphicon-home" aria-hidden="true"></span><br />
+             (123) 456-7890 <span class="glyphicon glyphicon-phone" aria-hidden="true"></span><br />
+            <a href="mailto:#">selvipebrina@gmail.com </a><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+          </address>
+        </div>
+      </footer>
+  </body>
+
+</html>
