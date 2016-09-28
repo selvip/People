@@ -1,12 +1,18 @@
 class GaragesController < ApplicationController
-	before_destroy :load_person
+	before_filter :get_person
 
 	def new
 		@garage = Garage.new
 	end
 
 	def create
-		@garage = Garage.new(params[:garage])
+		@garage = Garage.new(garage_params)
+		@garage.person_id = @person.id
+		if @garage.save
+			redirect_to(person_path(@person))
+		else
+			render 'new'
+		end
 	end
 
 	def destroy
@@ -17,8 +23,11 @@ class GaragesController < ApplicationController
 	end
 
 	private
-	def load_person
-		@person = Person.find_by_id(params[:person_id])
+	def garage_params
+		params.require(:garage).permit(:motor_cycle_id)
 	end
 
+	def get_person
+		@person = Person.find(params[:person_id])
+	end
 end
